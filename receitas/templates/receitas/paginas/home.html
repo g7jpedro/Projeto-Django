@@ -3,11 +3,16 @@
 <body>
 
     {% include 'receitas/parciais/header.html' %}
+    {% include 'receitas/parciais/search.html' %}
 
-    <div class="search-container">
+    <main class="main-content-container">
+        <div class="main-content main-content-list container">
+            {% include 'receitas/parciais/recipe.html' %}
+        </div>
+    </main>
 
-    </div>
-  
+    {% include 'receitas/parciais/footer.html' %}
+
     
 </body>
 
