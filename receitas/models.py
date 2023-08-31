@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 
 class Categoria(models.Model):
     categoria = models.CharField('Categoria', max_length=100)
+    class Meta:
+        verbose_name = 'Categoria'
+        verbose_name_plural = 'Categorias'
+    
+    def __str__(self):
+        return self.categoria
 
 class Receita(models.Model):
     titulo = models.CharField('Titulo', max_length=50)
@@ -20,3 +26,10 @@ class Receita(models.Model):
     imagem = models.ImageField(upload_to='receitas/imageens/%Y/%m/%d/')
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
     autor = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+    class Meta:
+        verbose_name = 'Receita'
+        verbose_name_plural = 'Receitas'
+    
+    def __str__(self):
+        return self.titulo[:10]
