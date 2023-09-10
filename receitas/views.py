@@ -1,16 +1,17 @@
 from django.shortcuts import render
-from uteis.receitas.factory import make_recipe
+from receitas.models import Receita
 
 
 def home(request):
-    return render(request, 'receitas/paginas/home.html', context = {
-        'receitas': [make_recipe() for _ in range(10)],
-    })
+
+    context = {
+        'receitas': Receita.objects.all() 
+    }
+    return render(request, 'receitas/paginas/home.html', context)
 
 
 def receitas(request, id):
-    return render(request, 'receitas/paginas/receitas-view.html', context= {
-        'receita': make_recipe(), 
+    return render(request, 'receitas/paginas/receitas-view.html', context= { 
         'is_detail_page': True,
         'receita_imagem': True, 
     })
