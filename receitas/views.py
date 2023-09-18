@@ -1,12 +1,20 @@
 from django.shortcuts import render
-from receitas.models import Receita
+from receitas.models import Receita 
 
 
 def home(request):
-
     context = {
-        'receitas': Receita.objects.all() 
+        'receitas': Receita.objects.all()
     }
+    
+    return render(request, 'receitas/paginas/home.html', context)
+
+
+def categoria(request, categoria_id):
+    context = {
+        'receitas': Receita.objects.filter(categoria__id=categoria_id)
+    }
+    
     return render(request, 'receitas/paginas/home.html', context)
 
 
