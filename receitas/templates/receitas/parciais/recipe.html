@@ -27,11 +27,13 @@
         <span class="recipe-author-item">
         {% if receitas.autor is not None %}
             <i class="fas fa-user"></i>
+            <a href="{% url 'receitas:autor' receitas.autor.id %}">
             {% if receitas.autor.first_name %}
                 {{ receitas.autor.first_name }} {{ receitas.autor.last_name }}
             {% else %}
                 {{ receitas.autor }}
-            {% endif %}    
+            {% endif %}
+            </a>    
         {% else %}
             <i class="fas fa-user"></i>
             Anônimo

@@ -18,6 +18,14 @@ def categoria(request, categoria_id):
     return render(request, 'receitas/paginas/categoria.html', context)
 
 
+def autor(request, autor_id):
+    context = {
+        'receitas': Receita.objects.filter(autor__id=autor_id, publicado=True)
+    }
+    
+    return render(request, 'receitas/paginas/autor.html', context)
+
+
 def receitas(request, id):
     return render(request, 'receitas/paginas/receitas-view.html', context= { 
         'is_detail_page': True,
