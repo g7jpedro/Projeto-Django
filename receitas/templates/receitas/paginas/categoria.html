@@ -1,0 +1,20 @@
+{% extends 'global/base.html' %}
+
+{% block titulo %}categoria{% endblock titulo %}
+
+{% block content %}
+    <main class="main-content-container">
+        <div class="main-content main-content-list container">
+            {% for receitas in receitas  %}
+                {% include 'receitas/parciais/recipe.html' %}
+            {% endfor %}
+
+        </div>
+    </main>
+{% endblock %}
+
+
+    
+</body>
+
+</html>

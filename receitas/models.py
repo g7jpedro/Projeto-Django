@@ -20,7 +20,7 @@ class Receita(models.Model):
     criacao = models.DateTimeField('Criação', auto_now_add=True)
     modificacao = models.DateTimeField('Modificação', auto_now=True)
     imagem = models.ImageField('Imagem', upload_to='receitas/imagem/%Y/%m/%d/')
-    publicado = models.BooleanField('Públicado ?', default=True)
+    publicado = models.BooleanField('Públicado ?', default=False)
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
     autor = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     slug = models.SlugField('Slug')

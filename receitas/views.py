@@ -4,7 +4,7 @@ from receitas.models import Receita
 
 def home(request):
     context = {
-        'receitas': Receita.objects.all()
+        'receitas': Receita.objects.filter(publicado=True)
     }
     
     return render(request, 'receitas/paginas/home.html', context)
@@ -12,10 +12,10 @@ def home(request):
 
 def categoria(request, categoria_id):
     context = {
-        'receitas': Receita.objects.filter(categoria__id=categoria_id)
+        'receitas': Receita.objects.filter(categoria__id=categoria_id, publicado=True)
     }
     
-    return render(request, 'receitas/paginas/home.html', context)
+    return render(request, 'receitas/paginas/categoria.html', context)
 
 
 def receitas(request, id):
