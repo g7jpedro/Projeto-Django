@@ -25,13 +25,17 @@
 
     <div class="recipe-author">
         <span class="recipe-author-item">
+        {% if receitas.autor is not None %}
             <i class="fas fa-user"></i>
             {% if receitas.autor.first_name %}
                 {{ receitas.autor.first_name }} {{ receitas.autor.last_name }}
             {% else %}
                 {{ receitas.autor }}
             {% endif %}    
-    
+        {% else %}
+            <i class="fas fa-user"></i>
+            Anônimo
+        {% endif %}
         </span>
         <span class="recipe-author-item">
             <i class="fas fa-calendar-alt"></i>
