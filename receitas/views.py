@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from receitas.models import Receita 
+from receitas.models import Receita, Categoria
 
 
 def home(request):
@@ -11,9 +11,14 @@ def home(request):
 
 
 def categoria(request, categoria_id):
+
+    categoria = Categoria.objects.get(id=categoria_id)
+    receitas = Receita.objects.filter(categoria=categoria, publicado=True).order_by('-id')
+
     context = {
-        'receitas': Receita.objects.filter(categoria__id=categoria_id, publicado=True)
-    }
+        'receitas': receitas,
+        'titulo': f'{categoria.categoria}'
+    }                          
     
     return render(request, 'receitas/paginas/categoria.html', context)
 
